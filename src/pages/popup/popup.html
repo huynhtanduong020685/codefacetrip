@@ -1,0 +1,14 @@
+<ion-content>
+  <h2>Message</h2>
+  <div *ngFor="let user of listUser; let i = index">
+    <h4 *ngIf="listUser.length == 1">To: {{user.name}}</h4>
+    <h4 *ngIf="i==0 && listUser.length > 1 ">To: {{user.name}} and {{listUser.length-1}} users</h4>
+
+  </div>
+  <ion-textarea rows="4" [(ngModel)]="message" placeholder="Message"></ion-textarea>
+
+  <div class="bt-popup">
+    <button ion-button color="primary" (click)="clickSend()">SEND</button>
+    <button ion-button color="primary" (click)="clickClose()">CLOSE</button>
+  </div>
+</ion-content>

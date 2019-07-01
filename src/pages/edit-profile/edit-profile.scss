@@ -1,0 +1,61 @@
+page-edit-profile {
+
+  .content {
+    ion-auto-complete {
+      .text-input {
+        padding-left: 0;
+        margin: 0;
+        width: 100%;
+      }
+    }
+
+    .country {
+      margin-left: 16px;
+      margin-right: 16px;
+      padding-top: 2rem;
+
+      p {
+        color: #999;
+        font-size: 13px;
+        margin: 13px 8px 13px 0;
+      }
+    }
+
+    .upload-btn-wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .btn {
+      border: 2px solid gray;
+      color: gray;
+      background-color: white;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .upload-btn-wrapper input[type=file] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+
+    .uploads {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      img {
+        width: auto;
+        max-width: 50%;
+        max-height: 200px;
+      }
+    }
+  }
+}

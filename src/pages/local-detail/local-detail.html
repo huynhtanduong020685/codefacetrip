@@ -1,0 +1,129 @@
+<ion-header>
+  <ion-navbar color="color-header">
+    <!-- <ion-buttons left>
+        <button (tap)="back()" ion-button icon-only clear>
+          <ion-icon name="md-arrow-back"></ion-icon>
+        </button>
+      </ion-buttons> -->
+    <ion-title>
+      FACE TRIP
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-8>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <b>{{user['name']}}</b>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <span>{{user['city']}}, {{user['country']}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <span class="langs">{{user['language1']}}</span>
+                  <span class="langs">{{user['language2']}}</span>
+                  <span class="langs">{{user['language3']}}</span>
+                  <span class="langs">{{user['language4']}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <span class="label">Fee: </span> <span>{{user['guide_fee']? user['guide_fee'] : 'Free'}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <span>{{user['meet_at_airport'] ? 'Meet at Airport': 'Not meet at Airport'}}</span>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-right style="justify-content: flex-end">
+            <button (tap)="openBrowser(user['fb_id'])" color="facebook" ion-button icon-only clear>
+              <ion-icon name="logo-facebook"></ion-icon>
+            </button>
+            <button (tap)="goToChat()" color="_gray" ion-button icon-only clear>
+              <ion-icon name="md-chatboxes"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <img *ngIf="!user['pictures']" [src]="user['picture']+'?type=normal'" alt="">
+      <ion-slides *ngIf="user['pictures']" pager="true">
+        <ng-container *ngFor="let pic of pictures">
+          <ion-slide *ngIf="pic.length>0">
+            <img [src]="pic" alt="">
+          </ion-slide>
+        </ng-container>
+      </ion-slides>
+      <p padding>{{user['introduction']}}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-list>
+    <ion-item-divider>
+      Homestay
+    </ion-item-divider>
+  </ion-list>
+  <div class="homestay" *ngFor="let homeStay of homestayList">
+    <div class="uploads">
+      <img *ngIf="!homeStay['pictures']" [src]="homeStay['picture']" alt="">
+      <ion-slides *ngIf="homeStay['pictures']" pager="true">
+        <ng-container *ngFor="let pic of getPictures(homeStay['pictures'])">
+          <ion-slide>
+            <img [src]="pic" alt="">
+          </ion-slide>
+        </ng-container>
+      </ion-slides>
+    </div>
+    <ion-grid class="homestay-desc">
+      <ion-row>
+        <ion-col>Locaiton</ion-col>
+        <ion-col>{{homeStay['location']}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Daily Price</ion-col>
+        <ion-col>{{homeStay['price']|currency:'USD'}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Wifi</ion-col>
+        <ion-col>{{homeStay['wifi']? 'Yes': 'No'}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Breakfast</ion-col>
+        <ion-col>{{homeStay['breakfast'] ? 'Yes': 'No'}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>{{homeStay['description']}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-item-divider>Reviews</ion-item-divider>
+    <ion-list>
+      <ion-item *ngFor="let review of reviews;">
+        <ion-avatar item-start>
+          <img [src]="review['picture']">
+        </ion-avatar>
+        <h2>{{review['name']}}</h2>
+        <p>{{review['review']}}</p>
+      </ion-item>
+    </ion-list>
+    <p>Write your Review</p>
+    <ion-textarea placeholder="Write your comment for this homestay" [(ngModel)]="comment" rows="4"></ion-textarea>
+    <button (tap)="addReview()" ion-button small>Submit</button>
+    <br>
+  </div>
+
+</ion-content>

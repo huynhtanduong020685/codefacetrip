@@ -1,0 +1,45 @@
+page-popup {
+    h2 {
+        text-align: center;
+    }
+
+    h4 {
+        margin-left: 10px;
+    }
+
+    ion-content {
+        left: 10% !important;
+        top: 15% !important;
+        width: 80% !important;
+        height: 55% !important;
+        border-color: black;
+        border-style: groove;
+        border-width: 1px;
+    }
+
+    .bt-popup {
+        position: absolute;
+        bottom: 0;
+        margin-left: 27%;
+    }
+
+    ion-textarea {
+        border-style: groove;
+        border-color: black;
+        border-width: 1px;
+        margin-left: 3%;
+        width: 94% !important;
+    }
+
+    .scroll-content {
+        overflow: unset !important;
+    }
+
+    .toast-wrapper {
+        background: rgba(0, 149, 255, 0.35) !important;
+    }
+
+    .toast-message {
+        color: #000 !important;
+    }
+}
